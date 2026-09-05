@@ -1,0 +1,52 @@
+VIRTUAL LATE BINDING YAPAR YENI RUN TIME ESNASINDA DEGISIKLIGI AYARLAR AMK 
+COMPILE TIME KISMINDA DEGIL RUN TIME KISMINDA HER SEYI AYARLAR .LATE BINDINGDIR BU 
+Ingilizce aciklamasi
+::::::->>>> Virtual functions use run-time binding or late binding. This means that the decision about which function to call is made during program execution rather than at compile time.
+
+
+
+
+
+
+
+
+FOR FRIEND USAGE : 
+
+Friend fonksiyonların icinde class member fonksiyonlarina ulaşmanın icin class objen olmak zorundadır.Aksi halde ne fonksiyonlara ne de variablelere ulaşamazsın.
+
+Postfix ve prefixi friend de yazabilirsin , class member da. Class member yazarken : 
+
+visa visa:: operator++(int ignore){ //5++
+    int temp = nbr;
+    nbr++;
+    return visa(temp);
+}
+
+
+  Eğer reference kullanmak istesen , return *this yapacaktın , return visa yerine: 
+       visa& visa ::operator++(){
+       nbr++;
+       return *this;
+
+
+REFERANSLAR :
+
+Referans dondurmak , zincirleme operator faydasını saglar ,bkz bircok kez kullanılabilen
+obj++ fonksiyonlari gibi.
+Referans icin local kullanamazsın , global dondurabilirsin.
+
+char* strcat(char* destination, const char* source); str cat Boyle kullanılıyor
+operator[] friend olamaz yani member olmak zorunda.
+
+Vektörleri printleme ve alma
+void prt(vector<vector< string >>& str ){ // printing and using loop 
+
+    for(const auto &row : str){ // const auto row 
+        for(const auto &num : row){
+            cout << num << " ";
+        } 
+        cout <<endl;
+    }
+}
+
+
