@@ -1,0 +1,13 @@
+Literature Review: Spell Checking Systems
+
+References
+
+1 Wikipedia. Levenshtein Distance. https://en.wikipedia.org/wiki/Levenshtein_distance
+
+2 Khoury College of Computer Sciences. Spell Checking with Edit Distance. https://course.khoury.northeastern.edu/cs6200sp15/slides/m02.s08%20-%20spell%20checking%20with%20edit%20distance.pdf
+
+3 Wikipedia. Spelling Suggestion. https://en.wikipedia.org/wiki/Spelling_suggestion
+
+4 GeeksforGeeks. HashMap in Java. https://www.geeksforgeeks.org/hashmap-in-java/
+
+5 GeeksforGeeks. HashSet in Java. https://www.geeksforgeeks.org/hashset-in-java/

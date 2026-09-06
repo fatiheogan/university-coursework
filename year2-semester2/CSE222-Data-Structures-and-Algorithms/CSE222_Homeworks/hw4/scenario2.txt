@@ -1,0 +1,25 @@
+create planetSystem Sun 5778 0 0 1500
+addPlanet Mercury Sun 340 0 0 600
+addPlanet Venus Mercury 737 9200000 0 400
+addPlanet Earth Venus 288 101325 60 250
+addSatellite Moon Earth 220 0 0 200
+addPlanet Mars Earth 210 610 0 300
+addSatellite Phobos Mars 233 0 0 310
+addSatellite Deimos Mars 233 0 0 305
+addPlanet Jupiter Mars 165 200000 0 500
+addSatellite Io Jupiter 130 1 0 480
+addSatellite Europa Jupiter 102 0 0 450
+addSatellite Ganymede Jupiter 110 0 0 470
+addSatellite Callisto Jupiter 134 0 0 460
+addPlanet Saturn Jupiter 134 140000 0 400
+addSatellite Titan Saturn 94 146700 1.4 390
+addPlanet Uranus Saturn 76 80000 0 350
+addSatellite Miranda Uranus 60 0 0 340
+addPlanet Neptune Uranus 72 100000 0 330
+addSatellite Triton Neptune 38 14000 0 325
+findRadiationAnomalies 1000
+getPathTo Titan
+printMissionReport
+printMissionReport Europa
+
+

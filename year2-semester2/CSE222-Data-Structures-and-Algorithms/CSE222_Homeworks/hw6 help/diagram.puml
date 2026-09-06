@@ -1,0 +1,86 @@
+@startuml
+
+class TestGTUClasses {
+    + static void main(String[] args)
+}
+
+class TestFramework {
+    + static void assertEquals(Object expected, Object actual, String message)
+    + static void assertTrue(boolean condition, String message)
+    + static void assertFalse(boolean condition, String message)
+    + static void printSummary()
+}
+
+class CustomList<T> {
+    - T[] arr
+    - int size
+    + void add(T value)
+    + T get(int index)
+    + boolean remove(T value)
+    + void printList()
+    + boolean contains(T value)
+    + Iterator<T> iterator()
+}
+
+class CustomListIterator<T> {
+    - int currentIndex
+    - CustomList<T> list
+    + boolean hasNext()
+    + T next()
+}
+
+class EditDistanceHelper {
+    - String word
+    + List<String> generateEdits(String word)
+    + List<String> generateAdditions(String word)
+    + List<String> generateDeletions(String word)
+    + List<String> generateSubstitutions(String word)
+}
+
+class Entry<K, V> {
+    - K key
+    - V value
+    - boolean isDeleted
+    + K getKey()
+    + V getValue()
+    + boolean isDeleted()
+}
+
+class GTUHashMap<K, V> {
+    - List<Entry<K, V>> table
+    - int size
+    + void put(K key, V value)
+    + V get(K key)
+    + void remove(K key)
+    + int findSlot(K key)
+    + void resize()
+}
+
+class GTUHashSet<K> {
+    - GTUHashMap<K, Boolean> map
+    + void add(K key)
+    + boolean contains(K key)
+    + void remove(K key)
+}
+
+class SpellChecker {
+    - GTUHashSet<String> dictionary
+    - EditDistanceHelper editDistanceHelper
+    + void checkSpelling(String word)
+    + List<String> getSuggestions(String word)
+}
+
+class TestFramework {
+    + static void assertEquals(Object expected, Object actual)
+    + static void assertTrue(boolean condition)
+}
+
+CustomList --> CustomListIterator
+GTUHashSet --> GTUHashMap
+SpellChecker --> GTUHashSet
+SpellChecker --> EditDistanceHelper
+TestGTUClasses --> TestFramework
+TestGTUClasses --> GTUHashMap
+TestGTUClasses --> GTUHashSet
+
+@enduml

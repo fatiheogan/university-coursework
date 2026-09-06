@@ -1,0 +1,182 @@
+Bu ödevde, farklı iletişim protokollerini kullanarak birden fazla cihazı bağlamak için bir arayüz tasarlayacaksınız. OOP tekniklerini kullanmak, farklı iletişim protokollerini kullanarak arayüz modüllerinin karmaşıklığını azaltmaya yardımcı olacaktır. Senaryo
+Gömülü bir sistemin iletişim portlarını kontrol etmek için bir çerçeve uygulamanız isteniyor. Sistemin farklı türlerde birden fazla portu (Protokol) var, her port aynı anda tek bir cihaz tarafından işgal edilebilir. Cihazlar sensörler, ekranlar veya kablosuz modüller olabilir. Her türün eş zamanlı cihaz sayısı sınırlıdır. Her cihaz türünün farklı işlemleri gerçekleştirmek için kendi yöntemleri vardır. Kullanıcı cihaz ekleyebilir, cihazları kaldırabilir ve çalışan cihazlarda işlemler yürütebilir. Kullanıcı ayrıca gerektiğinde bağlı cihazların ve kullanılabilir portların bir listesini görüntüleyebilmelidir. Belirtilen sınırların ötesinde cihaz ekleme, aynı porta birden fazla cihaz bağlamaya çalışma veya yanlış türü kullanarak bir cihaza başvurma gibi yasa dışı işlemler algılanmalı ve PROGRAMI SONLANDIRMADAN kullanıcıya bildirilmelidir. Sınıf Yapısı
+En İyi Sistem Sınıfı
+HWSystem sınıfı, kullanıcının cihaz ekleme, kaldırma ve sistemin durumunu görüntüleme gibi işlemleri yapması için ana arayüz olacaktır. Bu sınıf aşağıdaki işlemleri sağlamalıdır:
+• Cihaz ekleme/kaldırma.
+• Cihazları AÇMA/KAPAMA.
+• Cihaza özgü işlemleri yapma:
+o Sensör verilerini okuma.
+o Görüntülenecek verileri yazdırma.
+o Motor hızını değiştirme.
+o Kablosuz adaptöre gönderme/kablosuz adaptörden alma.
+• Hem dolu hem de boş portları gösteren bir port listesi gösterme.
+• Bağlı sensörlerin/ekranların/motor sürücülerinin/kablosuz adaptörlerin listelerini gösterme.
+
+Protokoller
+Protokoller, cihazların daha düşük seviyeli karmaşıklıklarıyla uğraşmadan sistemle iletişim kurmasını sağlar (Bu durumda basit bir printf işlevidir). Sistemimizdeki protokol sınıflarının listesi şu şekildedir:
+• Protokol (arayüz).
+o UART (Protokolü uygular).
+o SPI (Protokolü uygular).
+o I2C (Protokolü uygular).
+o OneWire (Protokolü uygular).
+
+Protokol (Arayüz):
+Sistemdeki bir protokolü temsil eden bir arayüz. Aşağıdaki yöntemleri bildirir:
+• String getProtocolName(): Çağrı yapan protokolün adını döndürür. (“I2C”, “SPI”, vb.)
+• String read(): Porttan veri okur. Bu yapay olduğundan, şu dizeyi döndürür: "<protocolName>: Reading.".
+• void write(String data): Porta veri yazar. Bu yapay olduğundan, terminale şu dizeyi yazdırır: "<protocolName>: Writing \“<data>\”.".
+I2C, SPI, UART ve OneWire Sınıfları:
+Bu sınıfların hepsi Protokol arayüzünü uygular. Bu sınıfların her biri getProtocolName yöntemini farklı şekilde uyguladığından, okuma ve yazma işlevlerinin geri bildirimleri farklı olmalıdır.
+
+Cihazlar
+Cihazlar, uyguladığımız sistemle iletişim kurmak için protokolleri kullanır. Cihazların
+birkaç türü vardır ve her türün onları genişleten birden fazla cihaz modeli vardır. Her cihaz türü
+farklı bir işlem kümesi sunar. Sistemdeki sınıfların listesi şöyledir:
+• Device (soyut)
+o Sensor (Cihazı genişletir) (devType)
+▪ TempSensor (Soyut) (Sensörü genişletir)
+• DHT11 (TempSensor'ı genişletir)
+• BME280 (TempSensor'ı genişletir)
+▪ IMUSensor (Soyut) (Sensörü genişletir)
+• MPU6050 (IMUSensor'ı genişletir)
+• GY951 (IMUSensor'ı genişletir)
+o Display (Cihazı genişletir) (devType)
+▪ LCD (Ekranı genişletir)
+▪ OLED (Ekranı genişletir)
+o WirelessIO (Cihazı genişletir) (devType)
+▪ Bluetooth (WirelessIO'yu genişletir)
+▪ Wifi (WirelessIO'yu genişletir)
+o MotorDriver (Cihazı genişletir) (devType)
+▪ PCA9685 (MotorDriver'ı genişletir)
+▪ SparkFunMD (MotorDriver'ı genişletir)
+
+Aygıt (soyut):
+Sisteme bağlı bir aygıtı temsil eden soyut bir sınıf. İletişim gerektiren işlemler sırasında kullanılacak bir
+Protokol nesnesine bir başvuru depolar. Aşağıdaki
+yöntemleri bildirir:
+• void turnON(): Aygıtın durumunu AÇIK olarak değiştirir. (Protokol yazmayı çağırmalıdır) (Yalnızca
+hiyerarşinin altındaki sınıflar tarafından uygulanmalıdır)
+• void turnOFF(): Aygıtın durumunu KAPALI olarak değiştirir. (Protokol yazmayı çağırmalıdır) (Yalnızca
+hiyerarşinin altındaki sınıflar tarafından uygulanmalıdır)
+• String getName(): Aygıtın modelinin adını döndürür. (MPU6050, OLED, vb.)
+(Yalnızca hiyerarşinin altındaki sınıflar tarafından uygulanmalıdır)
+• String getDevType(): Aygıtın ait olduğu türün adını döndürür. (“WirelessIO”,
+“Ekran”, vb.) (Sensör ve Ekran gibi her cihaz türü tarafından uygulanmalıdır)
+• State getState(): Cihazın durumunu döndürür. (Durum, AÇIK/KAPALI değerleri olan bir enumdur)
+
+Sensör (soyut) (Cihazı genişletir):
+Bir sensörü temsil eden soyut bir sınıf. Cihaz arayüzünü genişletir ve iki
+yeni yöntem bildirir:
+• String getSensType(): sensörün ait olduğu türün adını döndürür. (“TempSensor”,
+“IMUSensor”)
+• String data2String(): Sensörden okunan verileri bir dizeye dönüştürür.
+Birden fazla ölçüm işlevine sahip sensör türleri tüm değerleri içermelidir.
+Not: Bu sınıf getDevType yöntemini uygulamalıdır. Bu yöntem şu biçimde bir dize döndürmelidir: “<sensör türü> Sensör”. <sensör türü> getSensType()'ın çıktısıdır.
+
+
+TempSensor (soyut) (Sensörü genişletir)
+Genel bir sıcaklık sensörünü temsil eden soyut bir sınıf. Atanmış protokolden okuma yöntemini çağıran ve sensör tarafından ölçülen sıcaklığı Float olarak döndüren yeni bir yöntem olan
+getTemp'i tanıtır (Rastgele veri yeterlidir). getSensType ve
+data2String yöntemlerini uygular. data2String, şu biçimde bir dize döndürmelidir: “Sıcaklık:
+%.2fC”.
+
+IMUSensor (soyut) (Sensörü genişletir)
+Genel bir IMU sensörünü temsil eden soyut bir sınıf. İki yeni yöntem sunar,
+getAccel ve getRot, atanan protokolden okuma yöntemini çağırır ve sırasıyla ivme ve dönüş hızını Floats olarak döndürür (Rastgele veri yeterlidir).
+getSensType ve data2String yöntemlerini uygular. data2String, getAccel ve getRot'u çağırmalı ve şu biçimde bir
+dize döndürmelidir: “Accel: %.2f, Rot: %.2f”.
+
+Ekran (soyut) (Aygıtı genişletir)
+Genel bir ekranı temsil eden soyut bir sınıf. Belirli bir dize parametresiyle atanmış protokolden yazma yöntemini çağıran yeni bir yöntem olan printData'yı tanıtır.
+
+WirelessIO (soyut) (Aygıtı genişletir)
+Genel bir kablosuz bağdaştırıcıyı temsil eden soyut bir sınıf. Sınıf, bir kablosuz bağdaştırıcının gönderme ve alma işlemlerini simüle eden iki yeni yöntem sunar: sendData ve recvData.
+Her iki yöntem de sırasıyla atanmış protokolün yazma ve okuma yöntemlerini kullanmalıdır.
+
+MotorDriver (soyut) (Cihazı genişletir)
+Genel bir motor sürücüsünü temsil eden soyut bir sınıf. Hızı giriş parametresi olarak kullanarak atanmış protokolden yazma yöntemini çağıran yeni bir yöntem olan
+setMotorSpeed'i tanıtır.
+
+Cihaz Sınıfları
+Hiyerarşinin en altındaki tüm cihaz sınıfları somut sınıflar olmalıdır. Her sınıfın kendine özgü bir adı olmalıdır. Bu sınıflar cihaz türüne özgü işlemleri ve
+açma/kapatma işlevlerini uygulamalıdır. Her cihazın belirli protokol gereksinimleri vardır, yani tüm
+cihazlar tüm protokollerle uyumlu değildir. İşte özellikler:
+• DHT11: OneWire.
+• BME280: I2C, SPI.
+• MPU6050: I2C.
+• GY951: SPI, UART.
+• LCD: I2C.
+• OLED: SPI.
+• Bluetooth: UART.
+• Wifi: SPI, UART.
+• PCA9685: I2C.
+• SparkFunMD: SPI
+
+Configuration File
+When launching the application, the information about port configuration and limits on
+device type numbers should be provided in a file in the following format: (line numbers are not
+included)
+1. Port Configuration: <protocol>,<protocol>,<protocol>,......
+2. # of sensors:<integer>
+3. # of displays:<integer>
+4. # of wireless adapters:<integer>
+5. # of motor drivers:<integer>
+
+Çalışma Zamanı Komutları
+Komutlar terminal aracılığıyla sisteme verilecektir. Ayrıca, test amaçları için,
+giriş akışı çok sayıda komutu verimli bir şekilde yürütmek için bir dosyaya yönlendirilebilir.
+Komutlar aşağıdaki biçime sahip olacaktır:
+• turnON/turnOFF <portID> (Cihaz.turnON/turnOFF yöntemini çağırır.)
+• addDev <devName> <portID> <devID>
+• rmDev <portID> (Cihaz AÇIK ise veya port boşsa başarısız olmalıdır)
+• list ports
+o çıktı: (boş portlar için occupied/empty'den daha fazla bilgiye gerek yoktur)
+port listesi
+<portID> <protocolType> <occupied/empty> <devName> <devType> <devID> <State>
+.
+.
+• list <devType>
+o çıktı:
+<devType>s listesi
+<devName> <devID> <portID> <protocolType>
+.
+.
+• readSensor <devID> (Sensor.data2String yöntemini çağırır. Cihaz KAPALI ise başarısız olmalıdır)
+o çıktı:
+<devName> <devType>: <data2String çıktısı>
+• printDisplay <devID> <Dize> (Display.printData yöntemini çağırır. Cihaz KAPALI ise başarısız olmalıdır)
+• readWireless <devID> (WirelessIO.recvData yöntemini çağırır. Cihaz KAPALI ise başarısız olmalıdır)
+• writeWireless <devID> <Dize> (WirelessIO.sendData yöntemini çağırır. Cihaz KAPALI ise başarısız olmalıdır)
+• setMotorSpeed ​​<devID> <integer> (MotorDriver.setMotorSpeed ​​yöntemini çağırır. Cihaz KAPALI ise başarısız olmalıdır)
+• exit (programdan çıkar)
+Not: portID, port listesindeki bir portun dizinidir, 0 ile (maksimum port sayısı) - 1 arasında değişir. devID
+tüm cihazlar arasında bir cihazın dizinidir aynı tip, sensörler ve ekranlar gibi, 0 ile (aynı tipteki cihazların maksimum sayısı) - 1 arasında değişir.
+
+Hata İşleme
+Aşağıdaki yasadışı işlemler uygun şekilde ele alınmalı ve kullanıcıya PROGRAMI SONLANDIRMADAN bunlar hakkında bilgi verilmelidir:
+• Bir cihazı uyumsuz veya meşgul bir porta atamak.
+• Bir cihazı halihazırda kullanılan veya var olmayan bir devID ile atamak.
+• Yanlış giriş.
+• KAPALI veya var olmayan bir cihazdan cihaz türüne özgü bir işlem yayınlamak.
+• AÇIK olan bir cihazı kaldırmak.
+
+İzinler ve Kısıtlamalar:
+- Aşağıda tanımlananlar dışında herhangi bir kütüphaneyi kullanamazsınız:
+o java.io.File
+o java.util.ArrayList
+o java.util.Scanner (java.util.* değil)
+o Rastgele sayı üretimi için matematik kütüphanesi.
+- Aşağı dönüştürme yok.
+- Veri alanlarına yalnızca yöntemleri kullanarak erişin.
+- turnON/turnOFF işlemleri yalnızca “Device” türündeki referanslarda yapılmalıdır.
+
+Ödev Hakkında Genel Bilgiler:
+- Kopya çekmek yasaktır. Kopya çeken öğrenciler dersten NA alırlar.
+- Kod üretimi için AI araçları kullanılması durumunda lütfen belirtin, aksi takdirde
+kendisi olmayan bir kodun sahibi olduğunuzu iddia etmeniz cezalandırılır.
+- Notlandırılmak üzere bir demoya katılmanız istenecektir. Demoya katılmazsanız veya
+demo sırasında sorulan sorulara doğru cevaplar veremezseniz 0 alırsınız.
+- 3 Mart'taki Problem Oturumu ödevi ayrıntılı olarak açıklayacaktır. Herhangi bir sorunuz varsa, bunları PS'de sormalısınız. PS'den önce/sonra sorulan diğer sorular, bu PDF'de bir hata veya eksik bilgi olmadığı sürece göz ardı edilecektir. Böyle bir durumda duyuru Teams'de yapılacaktır, bunları zamanında okumaktan siz sorumlusunuz.
+- Geç gönderimlere izin verilmeyecektir. Teslim tarihi ertelenmeyecektir.
+
+

@@ -1,0 +1,4 @@
+bu ödevin amacı mesela bir gömülü sistem var biz de bu gömülü sistemdeki elemanları bir kullanıcı arayüzü yaparak onlara ulaşmayı onlar üzerinden aç kapa yazdırma vesaire işlemleri yapmayı hedefliyoruz.
+ilk başta interface  olarak protocol oluşturarak device ların hangi protokole ait olduğunu belirtmek için oluşturduk sonrasında alt sınıfları olan protocolleri implement ettik. sonrasında device classını oluşturarak cihazların bir classa ait olması için yaptık.Bu device classını oluştururken constructor kullandık ve sonrasında extends ile alt sınıfları oluşturduk. her biri için device daki fonksiyonları oluşturduk. böylece her device ın classı protocolü olmuş oldu.
+sonrasında kullanıcı için terminalde ulaşabilmes için sizin istediğiniz fonksiyonları hwsystemde tanımladım.
+main.java ile de yazdırdık

@@ -1,0 +1,42 @@
+@startuml fatih
+class PlanetarySystem {
+  -root: Node
+  +createPlanetSystem(starName: String, temperature: double, pressure: double, humidity: double, radiation: double)
+  +addPlanet(planetName: String, parentName: String, temperature: double, pressure: double, humidity: double, radiation: double)
+  +addSatellite(satelliteName: String, parentName: String, temperature: double, pressure: double, humidity: double, radiation: double)
+  +findRadiationAnomalies(threshold: double): List<Node>
+  +getPathTo(planetName: String): Stack<String>
+  +printMissionReport()
+  +printMissionReport(nodeName: String)
+}
+
+class Node {
+  -name: String
+  -type: String
+  -sensorData: SensorData
+  -children: List<Node>
+  +Node(name: String, type: String, sensorData: SensorData)
+  +getName(): String
+  +getType(): String
+  +getSensorData(): SensorData
+  +getChildren(): List<Node>
+  +addChild(child: Node)
+}
+
+class SensorData {
+  -temperature: double
+  -pressure: double
+  -humidity: double
+  -radiation: double
+  +SensorData(temperature: double, pressure: double, humidity: double, radiation: double)
+  +getTemperature(): double
+  +getPressure(): double
+  +getHumidity(): double
+  +getRadiation(): double
+  +toString(): String
+}
+
+PlanetarySystem o--> "1" Node : root
+Node o--> "1" SensorData : sensorData
+Node o--> "0..*" Node : children
+@enduml
