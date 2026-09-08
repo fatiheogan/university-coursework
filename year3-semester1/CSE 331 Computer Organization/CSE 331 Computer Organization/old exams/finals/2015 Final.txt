@@ -1,0 +1,26 @@
+2015 Organizasyon Final Çıkmış Sorular 31/12/2015
+
+Alparslan Hoca
+
+1 - Multicycle
+	- add this new instructor to given data path:
+		add3: t <= t + s + imm16
+	- finite state diagramına da ekleme yap yeni instructoru
+	- verilen assembly codlarını machine code'a çevir. hexadeximal olacak.
+	a,b,c,d,e,f şıkları vardı. Toplam 25 puan
+
+2 - Cache memory: çeşitli cache hesaplamaları 30 puan
+
+3 - Pipeline
+	- verilen instuctor code segmentine gerekli yerlere 'nop' işlemini ekleme
+	- verilen ifadedeki hazard türünü belirleyin
+	- verilen instructor codların toplam kaç cycle aldığını hesaplayın
+	30 puan
+	
+4 - Virtual Memory
+	verilen virtual memory şekline göre 5 şıktan oluşan çeşitli hesaplama işlemleri
+	dipnot: Toplam 40 puan olması ve hesaplamların kolay olmasından dolayı öncelikle bu konuya iyice çalışınız.
+	
+Puanlar doğrudur. Toplam 125 puanlık sınavdı.
+
+	hazırlayan: haLiL oymacı

@@ -1,0 +1,9 @@
+2023 - Güz Vize:
+--> Mips kodu verilmiş ona dair sorular:
+Pseudo instruction hangisi (la),binary hex dönüşümü, instructionı hex formatına dönüştürme,cpu time,bge komutunu mips komutları ile yazma
+--> 4 bit Carry ripple adder ve lookahead adder çizimi bunların delayları, critical path,Carry Lookahead Logic içinin tasarlanması
+--> bge komutunu mips komutları ile yazma
+
+--> R[Rd] = R[PC]
+    PC = R[Rs] + PC
+ifadesinin  Datapathini sordu buna dair örnek kod verildi çıktısı soruldu

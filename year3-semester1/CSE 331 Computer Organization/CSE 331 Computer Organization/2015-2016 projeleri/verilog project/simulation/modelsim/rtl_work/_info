@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\lion\Documents\verilog project\simulation\modelsim
+vfull_my_adder
+ILU^GML]z6XPZdnOCcf6k21
+VFP@;E8K=C>5n2^A5BFWaF0
+Z1 dC:\Users\lion\Documents\verilog project\simulation\modelsim
+w1444381617
+8C:/Users/lion/Documents/verilog project/full_my_adder.v
+FC:/Users/lion/Documents/verilog project/full_my_adder.v
+L0 1
+Z2 OV;L;10.1d;51
+r1
+31
+Z3 o-work work -O0
+!i10b 1
+!s100 o<`z5JeX6@`c]hGa][dNN2
+!s85 0
+!s108 1444381838.727000
+!s107 C:/Users/lion/Documents/verilog project/full_my_adder.v|
+!s90 -reportprogress|300|-work|work|C:/Users/lion/Documents/verilog project/full_my_adder.v|
+!s101 -O0
+vfull_test_module
+IXWkFe93H8;SMGfj_7RND<0
+VE=mOeIW@9ddXk2OAhIgOI3
+R1
+w1444381767
+8C:/Users/lion/Documents/verilog project/full_my_adder-test.v
+FC:/Users/lion/Documents/verilog project/full_my_adder-test.v
+L0 1
+R2
+r1
+31
+R3
+!i10b 1
+!s100 ARH3N<TQkV^CW=G<U@59]3
+!s85 0
+!s108 1444381839.287000
+!s107 C:/Users/lion/Documents/verilog project/full_my_adder-test.v|
+!s90 -reportprogress|300|-work|work|C:/Users/lion/Documents/verilog project/full_my_adder-test.v|
+!s101 -O0
+vmy_adder
+I2XNe3OlFNTW_GUhmCSI0c0
+VFPgAld=HAa_C]jzI7>4nl1
+R1
+w1444250999
+8C:/Users/lion/Documents/verilog project/my_adder_base.v
+FC:/Users/lion/Documents/verilog project/my_adder_base.v
+L0 1
+R2
+r1
+31
+R3
+!i10b 1
+!s100 aF>>djgbA2l<KNz21KlbS2
+!s85 0
+!s108 1444381839.590000
+!s107 C:/Users/lion/Documents/verilog project/my_adder_base.v|
+!s90 -reportprogress|300|-work|work|C:/Users/lion/Documents/verilog project/my_adder_base.v|
+!s101 -O0
+vtest_module
+!i10b 1
+!s100 fXCTe017B93B>acCid0QM1
+I[QzTY_0:ba?JeZPD_Te[12
+VTMPB3<Hi1P29zaZXRSC_:3
+R1
+w1444249838
+8C:/Users/lion/Documents/verilog project/my_adder_base-test.v
+FC:/Users/lion/Documents/verilog project/my_adder_base-test.v
+L0 1
+R2
+r1
+!s85 0
+31
+!s108 1444381839.853000
+!s107 C:/Users/lion/Documents/verilog project/my_adder_base-test.v|
+!s90 -reportprogress|300|-work|work|C:/Users/lion/Documents/verilog project/my_adder_base-test.v|
+!s101 -O0
+R3

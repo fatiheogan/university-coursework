@@ -1,0 +1,34 @@
+Quiz 1
+
+QUESTIONS:
+
+---
+
+Q1
+
+a)
+
+Machine A and Machine B given with their clock rate. Also A program with distrubion of operations given as rates. Machine A has static clock rate, but Machine B has optimation on certain task. how much time takes execute the program on machine A and machine B calculate
+
+b)
+
+ Question was asking which machine would run faster the program instruction and why explain?
+
+---
+
+Q2
+
+a)
+
+there was given given Mips instruction. they wanted convert this instruction one line C code.
+
+b)
+
+There was a Mips instruction (addi) we were asked to convert this intruction into hex and binary form by looking the green sheet.
+
+---
+
+Q3
+
+carry lookahead adder(CLA) box was given. We asked to design using CLA ALU that operates some tasks(addition,Sub,and,or,SLT) by selection. also the ALU should generate a signal for overflow.
+

@@ -1,0 +1,18 @@
+module full_my_adder-test();
+
+	reg [3:0]a;
+	reg [3:0]b;
+	wire [3:0]sum;
+	
+	full_my_adder testing(a,b,1'b0,sum);
+	initial begin $monitor ( "sum = %b a = %b b = %b",sum,a,b);
+		
+		a[0] = 0; a[1] = 0; a[2] = 0; a[3] = 0;
+		b[0] = 0; b[1] = 0; b[2] = 0; b[3] = 0;
+		#100
+		a[0] = 0; a[1] = 1; a[2] = 1; a[3] = 1;
+		b[0] = 1; b[1] = 0; b[2] = 1; b[3] = 1;
+		
+	end
+
+endmodule

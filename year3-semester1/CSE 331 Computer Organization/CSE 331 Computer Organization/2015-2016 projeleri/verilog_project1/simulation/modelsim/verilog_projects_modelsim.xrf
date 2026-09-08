@@ -1,0 +1,12 @@
+vendor_name = ModelSim
+source_file = 1, /home/robot/altera/13.1/verilog_projects/verilog_projects.v
+source_file = 1, /home/robot/altera/13.1/verilog_projects/verilog_projects-test.v
+source_file = 1, /home/robot/altera/13.1/verilog_projects/db/verilog_projects.cbx.xml
+design_name = my_adder
+instance = comp, \sum~output , sum~output, my_adder, 1
+instance = comp, \cout~output , cout~output, my_adder, 1
+instance = comp, \cin~input , cin~input, my_adder, 1
+instance = comp, \b~input , b~input, my_adder, 1
+instance = comp, \a~input , a~input, my_adder, 1
+instance = comp, \g2~0 , g2~0, my_adder, 1
+instance = comp, \g5~0 , g5~0, my_adder, 1

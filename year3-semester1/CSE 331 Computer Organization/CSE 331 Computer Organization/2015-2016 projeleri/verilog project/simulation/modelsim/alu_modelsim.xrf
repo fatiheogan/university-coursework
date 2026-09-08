@@ -1,0 +1,14 @@
+vendor_name = ModelSim
+source_file = 1, C:/Users/lion/Documents/verilog project/my_adder_base.v
+source_file = 1, C:/Users/lion/Documents/verilog project/my_adder_base-test.v
+source_file = 1, C:/Users/lion/Documents/verilog project/full_my_adder.v
+source_file = 1, C:/Users/lion/Documents/verilog project/full_my_adder-test.v
+source_file = 1, C:/Users/lion/Documents/verilog project/db/alu.cbx.xml
+design_name = my_adder
+instance = comp, \sum~output , sum~output, my_adder, 1
+instance = comp, \cout~output , cout~output, my_adder, 1
+instance = comp, \a~input , a~input, my_adder, 1
+instance = comp, \cin~input , cin~input, my_adder, 1
+instance = comp, \b~input , b~input, my_adder, 1
+instance = comp, \g2~0 , g2~0, my_adder, 1
+instance = comp, \g5~0 , g5~0, my_adder, 1

@@ -1,0 +1,6 @@
+pipelining, 
+pipelining hazard, 
+pipeline processor datapath, 
+assembly, 
+computer performance,
+Memory cache, 

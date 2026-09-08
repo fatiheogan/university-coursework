@@ -1,0 +1,61 @@
+# Reading C:/altera/13.1/modelsim_ase/tcl/vsim/pref.tcl 
+# do proje01_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/mercan/Desktop/proje1 {C:/Users/mercan/Desktop/proje1/half_adder.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module half_adder
+# 
+# Top level modules:
+# 	half_adder
+# vlog -vlog01compat -work work +incdir+C:/Users/mercan/Desktop/proje1 {C:/Users/mercan/Desktop/proje1/full_adder.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module full_adder
+# 
+# Top level modules:
+# 	full_adder
+# 
+vlog -reportprogress 300 -work work C:/Users/mercan/Desktop/proje1/full_adder_testbench.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module full_adder_testbench
+# 
+# Top level modules:
+# 	full_adder_testbench
+vlog -reportprogress 300 -work work C:/Users/mercan/Desktop/proje1/half_adder_testbench.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module half_adder_testbench
+# 
+# Top level modules:
+# 	half_adder_testbench
+vsim work.full_adder_testbench
+# vsim work.full_adder_testbench 
+# Loading work.full_adder_testbench
+# Loading work.full_adder
+# Loading work.half_adder
+add wave -position insertpoint  \
+sim:/full_adder_testbench/a \
+sim:/full_adder_testbench/b \
+sim:/full_adder_testbench/carry_in \
+sim:/full_adder_testbench/sum \
+sim:/full_adder_testbench/carry_out
+step -current
+# time =  0, a =0, b=0, carry_in=0, sum=0, carry_out=0
+# time = 20, a =0, b=0, carry_in=1, sum=1, carry_out=0
+# time = 40, a =0, b=1, carry_in=0, sum=1, carry_out=0
+# time = 60, a =0, b=1, carry_in=1, sum=0, carry_out=1
+# time = 80, a =1, b=0, carry_in=0, sum=1, carry_out=0
+# time = 100, a =1, b=0, carry_in=1, sum=0, carry_out=1
+# time = 120, a =1, b=1, carry_in=0, sum=0, carry_out=1
+# time = 140, a =1, b=1, carry_in=1, sum=1, carry_out=1
+# Error opening C:/Users/mercan/Desktop/proje1/full_adder_testbench.v
+# Path name 'C:/Users/mercan/Desktop/proje1/full_adder_testbench.v' doesn't exist.
+noforce sim:/full_adder_testbench/fatb/a
+# Load canceled

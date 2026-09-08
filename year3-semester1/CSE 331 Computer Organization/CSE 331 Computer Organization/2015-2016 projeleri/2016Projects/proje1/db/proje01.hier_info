@@ -1,0 +1,20 @@
+|smallBinaryNumberFound
+result << n18.DB_MAX_OUTPUT_PORT_TYPE
+number1[0] => n14.IN1
+number1[1] => n3.IN0
+number1[1] => n13.IN1
+number1[2] => n2.IN0
+number1[2] => n12.IN1
+number1[3] => n1.IN0
+number1[3] => n11.IN0
+number1[4] => n15.IN0
+number2[0] => n14.IN2
+number2[1] => n3.IN1
+number2[1] => n13.IN2
+number2[2] => n2.IN1
+number2[2] => n12.IN2
+number2[3] => n1.IN1
+number2[3] => n11.IN1
+number2[4] => n15.IN1
+
+

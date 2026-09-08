@@ -1,0 +1,1 @@
+a simple MIPS code to calculate and print the sum of integers in an array using the MARS simulator??

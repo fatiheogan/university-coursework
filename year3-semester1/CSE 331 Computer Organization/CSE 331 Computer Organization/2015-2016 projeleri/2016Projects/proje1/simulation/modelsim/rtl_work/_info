@@ -1,0 +1,83 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\mercan\Desktop\proje1\simulation\modelsim
+vfull_adder
+I_FS6DCiGl1?`;GlZgC0RD0
+VRYP>nD9R>G8ML@J?Oi=:32
+Z1 dC:\Users\mercan\Desktop\proje1\simulation\modelsim
+w1475839936
+8C:/Users/mercan/Desktop/proje1/full_adder.v
+FC:/Users/mercan/Desktop/proje1/full_adder.v
+L0 1
+Z2 OV;L;10.1d;51
+r1
+31
+Z3 o-vlog01compat -work work -O0
+Z4 !s92 -vlog01compat -work work +incdir+C:/Users/mercan/Desktop/proje1 -O0
+!i10b 1
+!s100 nRm^KCCNaW>hF0Zoef^C:0
+!s85 0
+!s108 1476873189.813000
+!s107 C:/Users/mercan/Desktop/proje1/full_adder.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/mercan/Desktop/proje1|C:/Users/mercan/Desktop/proje1/full_adder.v|
+!s101 -O0
+vfull_adder_testbench
+IiG<B6]>L3i2VUP>8RhO^A1
+V<JLH3TkG^j>n[U:4II63c1
+R1
+w1475839956
+8C:/Users/mercan/Desktop/proje1/full_adder_testbench.v
+FC:/Users/mercan/Desktop/proje1/full_adder_testbench.v
+L0 1
+R2
+r1
+31
+Z5 o-work work -O0
+!i10b 1
+!s100 >4_FKF5Y=;b@>T8@T5XNd1
+!s85 0
+!s108 1476873264.817000
+!s107 C:/Users/mercan/Desktop/proje1/full_adder_testbench.v|
+!s90 -reportprogress|300|-work|work|C:/Users/mercan/Desktop/proje1/full_adder_testbench.v|
+!s101 -O0
+vhalf_adder
+I[FOc;c5WPC>5RPdioNP3k2
+VUANSHBM`n;lleGcSze4Z^1
+R1
+w1475839928
+8C:/Users/mercan/Desktop/proje1/half_adder.v
+FC:/Users/mercan/Desktop/proje1/half_adder.v
+L0 1
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 S19>nfB<FJz0JknPLH[Gj2
+!s85 0
+!s108 1476873189.329000
+!s107 C:/Users/mercan/Desktop/proje1/half_adder.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/mercan/Desktop/proje1|C:/Users/mercan/Desktop/proje1/half_adder.v|
+!s101 -O0
+vhalf_adder_testbench
+!i10b 1
+!s100 MPZX]RZeaVcL9R9jQK]Ih2
+Izo]fZHE8nJ?O_XGe4HR>?0
+VBNR=D2M1STSBI=6SKWVQd0
+R1
+w1475839972
+8C:/Users/mercan/Desktop/proje1/half_adder_testbench.v
+FC:/Users/mercan/Desktop/proje1/half_adder_testbench.v
+L0 1
+R2
+r1
+!s85 0
+31
+!s108 1476873264.973000
+!s107 C:/Users/mercan/Desktop/proje1/half_adder_testbench.v|
+!s90 -reportprogress|300|-work|work|C:/Users/mercan/Desktop/proje1/half_adder_testbench.v|
+!s101 -O0
+R5
