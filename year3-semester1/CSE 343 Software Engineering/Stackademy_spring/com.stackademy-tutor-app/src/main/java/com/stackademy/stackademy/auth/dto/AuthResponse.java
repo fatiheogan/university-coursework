@@ -1,0 +1,12 @@
+package com.stackademy.stackademy.auth.dto;
+
+public class AuthResponse {
+  public String accessToken;
+  public String tokenType = "Bearer";
+  public boolean emailVerified;
+
+  public AuthResponse(String token, boolean emailVerified) {
+    this.accessToken = token;
+    this.emailVerified = emailVerified;
+  }
+}

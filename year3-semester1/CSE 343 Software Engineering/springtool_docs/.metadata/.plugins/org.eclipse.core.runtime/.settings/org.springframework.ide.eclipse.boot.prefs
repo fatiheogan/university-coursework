@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.artifactId=student_project
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.bootVersion=3.5.3
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.description=databasede \u00F6\u011Frenci tutma
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.groupId=com.fatihemre
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.javaVersion=17
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.language=java
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.name=student_project
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packageName=com.fatihemre.student_project
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packaging=jar
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.type=MAVEN
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.version=1.0.0
+org.springframework.ide.eclipse.boot.wizard.initializr.url=https\://start.spring.io\n

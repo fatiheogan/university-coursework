@@ -1,0 +1,16 @@
+package com.stackademy.stackademy.mail;
+
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
+
+@Service
+@Profile({"dev", "test"})
+public class DummyEmailService implements EmailService {
+
+    @Override
+    public void sendVerificationEmail(String to, String token) {
+        // Şimdilik gerçek gönderim yok; test için log basalım:
+        System.out.println("[FAKE EMAIL] to=" + to);
+        System.out.println("[FAKE EMAIL] verify link = http://localhost:8080/auth/verify?token=" + token);
+    }
+}

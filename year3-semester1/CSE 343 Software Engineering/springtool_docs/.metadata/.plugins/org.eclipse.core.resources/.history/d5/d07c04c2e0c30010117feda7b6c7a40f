@@ -1,0 +1,26 @@
+package fatihemre.com.stackademy.tutor_app.common;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import fatihemre.com.stackademy.tutor_app.user.UserNotFoundException;
+
+import java.util.Map;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+  @ExceptionHandler(UserNotFoundException.class)
+  public ResponseEntity<Map<String, Object>> handleNotFound(UserNotFoundException ex) {
+    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+        .body(Map.of("error", "not_found", "message", ex.getMessage()));
+  }
+
+  @ExceptionHandler(org.springframework.dao.DataIntegrityViolationException.class)
+  public ResponseEntity<Map<String, Object>> handleUnique() {
+    return ResponseEntity.status(HttpStatus.CONFLICT)
+        .body(Map.of("error", "conflict", "message", "Duplicate email or nickname"));
+  }
+}

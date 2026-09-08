@@ -1,0 +1,41 @@
+package com.fatihemre.stackademy.tutor_app.user;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*; 
+import java.util.List;
+
+@RestController //REST API Controller
+@RequestMapping("/api/users") //base path
+public class UserController {
+
+  private final UserService service;
+  public UserController(UserService service) { this.service = service; }
+
+  // List
+  @GetMapping
+  public List<User> list() { return service.list(); }
+
+  // Create
+  @PostMapping
+  @ResponseStatus(HttpStatus.CREATED)
+  public User create(@RequestBody User u) { return service.create(u); }
+
+  // Get by id
+  @GetMapping("/{id}")
+  public User get(@PathVariable Long id) { return service.get(id); }
+
+  // Update (PUT/PATCH aynı mantık – isteğe göre ayrı da açabiliriz)
+  @PutMapping("/{id}")
+  public User updatePut(@PathVariable Long id, @RequestBody User u) {
+    return service.update(id, u);
+  }
+  @PatchMapping("/{id}")
+  public User updatePatch(@PathVariable Long id, @RequestBody User u) {
+    return service.update(id, u);
+  }
+
+  // Delete
+  @DeleteMapping("/{id}")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public void delete(@PathVariable Long id) { service.delete(id); }
+}

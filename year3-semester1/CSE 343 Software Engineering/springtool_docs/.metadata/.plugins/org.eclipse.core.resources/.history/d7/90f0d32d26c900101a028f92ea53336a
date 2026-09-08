@@ -1,0 +1,40 @@
+package com.stackademy.stackademy.tutor_app.auth;
+
+import jakarta.persistence.*;
+import java.time.OffsetDateTime;
+import java.util.UUID;
+
+import com.stackademy.stackademy.user.User;
+
+@Entity
+@Table(name = "email_verification_tokens")
+public class EmailVerificationToken {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id", nullable = false)
+  private User user;
+
+  @Column(nullable = false, unique = true)
+  private UUID token;
+
+  @Column(nullable = false, columnDefinition = "timestamptz")
+  private OffsetDateTime expiresAt;
+
+  @Column(nullable = false)
+  private boolean used = false;
+
+  // getters & setters
+  public Long getId() { return id; }
+  public User getUser() { return user; }
+  public void setUser(User user) { this.user = user; }
+  public UUID getToken() { return token; }
+  public void setToken(UUID token) { this.token = token; }
+  public OffsetDateTime getExpiresAt() { return expiresAt; }
+  public void setExpiresAt(OffsetDateTime expiresAt) { this.expiresAt = expiresAt; }
+  public boolean isUsed() { return used; }
+  public void setUsed(boolean used) { this.used = used; }
+}

@@ -1,0 +1,5 @@
+package com.fatihemre.stackademy.tutor_app.mail;
+
+public interface EmailService {
+    void sendVerificationEmail(String to, String token);
+}

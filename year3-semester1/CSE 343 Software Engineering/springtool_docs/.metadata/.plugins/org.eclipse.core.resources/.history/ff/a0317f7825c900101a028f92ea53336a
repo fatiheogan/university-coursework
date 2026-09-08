@@ -1,0 +1,53 @@
+package com.fatihemre.stackademy.tutor_app.auth;
+
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.fatihemre.stackademy.tutor_app.auth.dto.AuthResponse;
+import com.fatihemre.stackademy.tutor_app.auth.dto.LoginRequest;
+import com.fatihemre.stackademy.tutor_app.auth.dto.RegisterRequest;
+
+@RestController
+@RequestMapping("/api/auth")
+public class AuthController {
+
+    private final AuthService authService;
+
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
+
+    /** Kayıt → doğrulama maili (dev'de dummy servis log basar) */
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest req) {
+        authService.register(req);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("{\"message\":\"Registration received. Check console for VERIFY LINK.\"}");
+    }
+
+    /** E-posta doğrulama */
+    @GetMapping("/verify-email")
+    public ResponseEntity<?> verify(@RequestParam String token) {
+        boolean ok = authService.verifyEmail(token);
+        if (ok) {
+            return ResponseEntity.ok("{\"message\":\"Email verified\"}");
+        }
+        return ResponseEntity.badRequest()
+                .body("{\"message\":\"Invalid or expired token\"}");
+    }
+
+    /** Login → sadece doğrulanmış kullanıcıya token döner */
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest req) {
+        AuthResponse res = authService.login(req);
+        return ResponseEntity.ok(res);
+    }
+
+    /** Sağlık kontrolü */
+    @GetMapping("/ping")
+    public String ping() {
+        return "good";
+    }
+}

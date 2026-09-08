@@ -1,0 +1,7 @@
+package fatihemre.com.stackademy.tutor_app.user;
+
+public class UserNotFoundException extends RuntimeException {
+  public UserNotFoundException(Long id) {
+    super("User not found: " + id);
+  }
+}

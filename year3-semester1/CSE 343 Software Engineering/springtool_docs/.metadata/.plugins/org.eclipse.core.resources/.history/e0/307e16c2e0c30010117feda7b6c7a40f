@@ -1,0 +1,6 @@
+package fatihemre.com.stackademy.tutor_app.auth.dto;
+
+public class LoginRequest {
+  public String emailOrNickname;
+  public String password;
+}

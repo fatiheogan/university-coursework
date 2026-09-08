@@ -1,0 +1,47 @@
+package com.fatihemre.stackademy.tutor_app.user;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+
+@Service //service benai oldugunu söyler Spring boot container a koyar 
+public class UserService {
+
+  private final UserRepository repo; //service repo ile bağlamı
+  public UserService(UserRepository repo) { this.repo = repo; }
+
+  @Transactional(readOnly = true) //sadece veri okuma
+  public List<User> list() { return repo.findAll(); } //tüm usersı çeker controllerdan gelen GET /api/users çalıştırır
+
+  @Transactional(readOnly = true)
+  public User get(Long id) { //id ile user arama 
+    return repo.findById(id).orElseThrow(() -> new UserNotFoundException(id)); //yoksa yazdığımız exception döner
+  }
+
+  @Transactional // db yazma işlemi
+  public User create(User u) {
+    if (u.getUserType() == null || u.getUserType().isBlank()) u.setUserType("free");
+    return repo.save(u);
+  }
+
+  @Transactional
+  public User update(Long id, User in) { //var olan userı çek değerleri değiş
+    User u = get(id);
+    // Tam/PUT güncelleme – gelen boş değer varsa eskiyi koru istersen:
+    if (in.getFirstName() != null)    u.setFirstName(in.getFirstName());
+    if (in.getLastName() != null)     u.setLastName(in.getLastName());
+    if (in.getNickname() != null)     u.setNickname(in.getNickname());
+    if (in.getEmail() != null)        u.setEmail(in.getEmail());
+    if (in.getPhone() != null)        u.setPhone(in.getPhone());
+    if (in.getPasswordHash() != null) u.setPasswordHash(in.getPasswordHash()); // (sonra BCrypt)
+    if (in.getUserType() != null)     u.setUserType(in.getUserType());
+    if (in.getIsActive() != null)     u.setIsActive(in.getIsActive());
+    return repo.save(u);
+  }
+
+  @Transactional
+  public void delete(Long id) {
+    if (!repo.existsById(id)) throw new UserNotFoundException(id);
+    repo.deleteById(id);
+  }
+}

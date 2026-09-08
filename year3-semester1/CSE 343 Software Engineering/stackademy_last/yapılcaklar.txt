@@ -1,0 +1,7 @@
+report 2 3.a 3.b
+isimsiz kısımlara ad soyad api
+şifremi unuttum
+paket değiştirince database değişmiyor 
+yanlış dosya silme
+yükleme kısmı hatalı 
+chatblog

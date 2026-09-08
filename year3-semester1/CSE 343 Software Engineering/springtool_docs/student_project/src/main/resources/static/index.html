@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Öğrenci CRUD</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, button { margin: 5px; }
+    table, th, td { border: 1px solid black; border-collapse: collapse; padding: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Öğrenci CRUD İşlemleri</h1>
+
+  <div>
+    <h2>Yeni Öğrenci Ekle (Insert)</h2>
+    İsim: <input type="text" id="name" />
+    Not: <input type="number" id="grade" step="0.1" />
+    <button onclick="addStudent()">Ekle</button>
+  </div>
+
+  <div>
+    <h2>Öğrenci Güncelle (Update)</h2>
+    ID: <input type="number" id="updateId" />
+    Yeni İsim: <input type="text" id="updateName" />
+    Yeni Not: <input type="number" id="updateGrade" step="0.1" />
+    <button onclick="updateStudent()">Güncelle</button>
+  </div>
+
+  <div>
+    <h2>Öğrenci Sil (Delete)</h2>
+    Silinecek Öğrenci ID: <input type="number" id="deleteId" />
+    <button onclick="deleteStudent()">Sil</button>
+  </div>
+
+  <div>
+    <h2>Öğrenci Listele (Select)</h2>
+    <button onclick="listStudents()">Listele</button>
+    <table id="studentTable" style="margin-top: 10px;">
+      <thead>
+        <tr><th>ID</th><th>İsim</th><th>Not</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    const apiBase = '/students';
+
+    async function addStudent() {
+      const name = document.getElementById('name').value;
+      const grade = parseFloat(document.getElementById('grade').value);
+      if (!name || isNaN(grade)) {
+        alert('Lütfen isim ve notu doğru girin.');
+        return;
+      }
+      const res = await fetch(apiBase, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name, grade})
+      });
+      if (res.ok) {
+        alert('Öğrenci eklendi!');
+        document.getElementById('name').value = '';
+        document.getElementById('grade').value = '';
+        listStudents();
+      } else {
+        alert('Ekleme hatası!');
+      }
+    }
+
+    async function updateStudent() {
+      const id = parseInt(document.getElementById('updateId').value);
+      const name = document.getElementById('updateName').value;
+      const grade = parseFloat(document.getElementById('updateGrade').value);
+      if (isNaN(id) || !name || isNaN(grade)) {
+        alert('Lütfen tüm alanları doğru doldurun.');
+        return;
+      }
+      const res = await fetch(`${apiBase}/${id}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name, grade})
+      });
+      if (res.ok) {
+        alert('Öğrenci güncellendi!');
+        document.getElementById('updateId').value = '';
+        document.getElementById('updateName').value = '';
+        document.getElementById('updateGrade').value = '';
+        listStudents();
+      } else {
+        alert('Güncelleme hatası!');
+      }
+    }
+
+    async function deleteStudent() {
+      const id = parseInt(document.getElementById('deleteId').value);
+      if (isNaN(id)) {
+        alert('Lütfen geçerli bir ID girin.');
+        return;
+      }
+      const res = await fetch(`${apiBase}/${id}`, { method: 'DELETE' });
+      if (res.ok) {
+        const text = await res.text();
+        alert(text);
+        document.getElementById('deleteId').value = '';
+        listStudents();
+      } else {
+        alert('Silme hatası!');
+      }
+    }
+
+    async function listStudents() {
+      const res = await fetch(apiBase);
+      if (res.ok) {
+        const students = await res.json();
+        const tbody = document.querySelector('#studentTable tbody');
+        tbody.innerHTML = '';
+        students.forEach(s => {
+          const row = document.createElement('tr');
+          row.innerHTML = `<td>${s.id}</td><td>${s.name}</td><td>${s.grade}</td>`;
+          tbody.appendChild(row);
+        });
+      } else {
+        alert('Listeleme hatası!');
+      }
+    }
+
+    // Sayfa yüklendiğinde listele
+    window.onload = listStudents;
+  </script>
+</body>
+</html>

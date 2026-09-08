@@ -1,0 +1,13 @@
+# Veritabanı bağlantısı
+spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=student_project_db;encrypt=true;trustServerCertificate=true
+spring.datasource.username=sa
+spring.datasource.password=1
+spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+# JPA ayarları
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.SQLServerDialect
+
+# Server port
+server.port=8205

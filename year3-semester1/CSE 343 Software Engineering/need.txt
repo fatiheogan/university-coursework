@@ -1,0 +1,7 @@
+react native
+java script 
+figma (ilk olarak nasıl gözükecek ui)-> tasarım için ne yapıp edilecek görünümü
+kullanıcı tipleri görülecek veritabanını ona göre oluşturacağız 
+
+backend
+java spring boot

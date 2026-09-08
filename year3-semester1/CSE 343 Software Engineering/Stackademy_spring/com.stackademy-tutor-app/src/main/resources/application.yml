@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dvbear
+    username: dvbear_user
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate          # Şemayı Flyway kuruyor, Hibernate sadece doğruluyor
+    properties:
+      hibernate:
+        format_sql: true          # SQL loglarını okunur yaz
+    open-in-view: false
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+server:
+  port: 8080
+
+app:
+  base-url: "http://localhost:8080"   # verify linkleri için
+  jwt:
+    secret: "LWm6l6kRkYp6yqB7gX9P2zT5uV8yB3kM4pQ1sT7wZ9cD2fG6hJ8L0N2Q4S6U8W0"   # DEV için; prod'da ENV'den verilecek
+    expiration-min: 60                       # access token süresi (dk)

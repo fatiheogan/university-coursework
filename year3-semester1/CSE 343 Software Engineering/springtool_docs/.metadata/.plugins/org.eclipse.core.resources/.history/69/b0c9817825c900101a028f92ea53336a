@@ -1,0 +1,143 @@
+package com.fatihemre.stackademy.tutor_app.auth;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.fatihemre.stackademy.tutor_app.auth.dto.AuthResponse;
+import com.fatihemre.stackademy.tutor_app.auth.dto.LoginRequest;
+import com.fatihemre.stackademy.tutor_app.auth.dto.RegisterRequest;
+import com.fatihemre.stackademy.tutor_app.mail.EmailService;
+import com.fatihemre.stackademy.tutor_app.user.User;
+import com.fatihemre.stackademy.tutor_app.user.UserRepository;
+
+import java.time.OffsetDateTime;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+
+@Service
+public class AuthService {
+
+    private final EmailService emailService;
+    private final UserRepository userRepo;
+    private final EmailVerificationTokenRepository tokenRepo;
+    private final PasswordEncoder encoder;
+    private final JwtService jwt;
+
+    @Value("${app.url:http://localhost:8080}")
+    private String appUrl; // doğrulama linki için base URL
+
+    public AuthService(EmailService emailService,
+                       UserRepository userRepo,
+                       EmailVerificationTokenRepository tokenRepo,
+                       PasswordEncoder encoder,
+                       JwtService jwt) {
+        this.emailService = emailService;
+        this.userRepo = userRepo;
+        this.tokenRepo = tokenRepo;
+        this.encoder = encoder;
+        this.jwt = jwt;
+    }
+
+    /**
+     * Kayıt: kullanıcıyı oluştur, pasif yap (isActive=false),
+     * e-posta doğrulama tokenı üret ve doğrulama linkini gönder.
+     */
+    public void register(RegisterRequest req) {
+        // 1) Kullanıcı oluştur
+        User u = new User();
+        u.setFirstName(req.firstName);
+        u.setLastName(req.lastName);
+        u.setNickname(req.nickname);
+        u.setEmail(req.email);
+        u.setPhone(req.phone);
+        u.setPasswordHash(encoder.encode(req.password)); // BCrypt
+        u.setUserType("free");
+        u.setIsActive(false); // e-posta doğrulanana kadar pasif
+        userRepo.save(u);
+
+        // 2) Doğrulama tokenı oluştur
+        EmailVerificationToken t = new EmailVerificationToken();
+        t.setUser(u);
+        t.setToken(UUID.randomUUID());
+        t.setExpiresAt(OffsetDateTime.now().plusDays(1));
+        t.setUsed(false);
+        tokenRepo.save(t);
+
+        // 3) Doğrulama linki oluştur ve gönder
+        // Not: Controller'da endpoint'in tam yolu "/api/auth/verify-email" ise burasıyla uyumlu.
+        String link = appUrl + "/api/auth/verify-email?token=" + t.getToken();
+        // DummyEmailService dev'de sadece log basar; prod'da gerçek SMTP implementasyonu devreye girer.
+        emailService.sendVerificationEmail(u.getEmail(), t.getToken().toString());
+        // İstersen log da bırak:
+        System.out.println("### VERIFY LINK (dev): " + link);
+    }
+
+    /**
+     * E-posta doğrulama: token geçerliyse kullanıcıyı aktif hale getirir.
+     */
+    public boolean verifyEmail(String tokenStr) {
+        UUID token;
+        try {
+            token = UUID.fromString(tokenStr);
+        } catch (IllegalArgumentException ex) {
+            return false;
+        }
+
+        Optional<EmailVerificationToken> opt = tokenRepo.findByToken(token);
+        if (opt.isEmpty()) return false;
+
+        EmailVerificationToken t = opt.get();
+        if (Boolean.TRUE.equals(t.isUsed())) return false;
+        if (t.getExpiresAt() == null || t.getExpiresAt().isBefore(OffsetDateTime.now())) return false;
+
+        User u = t.getUser();
+        if (u == null) return false;
+
+        u.setIsActive(true);
+        t.setUsed(true);
+
+        userRepo.save(u);
+        tokenRepo.save(t);
+        return true;
+    }
+
+    /**
+     * Login → sadece doğrulanmış (isActive=true) kullanıcıya JWT üretir.
+     */
+    public AuthResponse login(LoginRequest req) {
+        // Kullanıcıyı email veya nickname ile bul
+        Optional<User> uOpt = userRepo.findByEmail(req.emailOrNickname);
+        if (uOpt.isEmpty()) {
+            uOpt = userRepo.findByNickname(req.emailOrNickname);
+        }
+        if (uOpt.isEmpty()) {
+            throw new RuntimeException("User not found");
+        }
+
+        User u = uOpt.get();
+
+        // Şifre kontrolü
+        if (!encoder.matches(req.password, u.getPasswordHash())) {
+            throw new RuntimeException("Invalid credentials");
+        }
+
+        // E-posta doğrulaması yapılmış mı?
+        if (!Boolean.TRUE.equals(u.getIsActive())) {
+            // İstersen burada "resend verification" tetikleyebilirsin.
+            throw new RuntimeException("Email not verified");
+        }
+
+        // JWT üret
+        String token = jwt.generate(
+                u.getUserId().toString(),
+                Map.of(
+                        "nickname", u.getNickname(),
+                        "role", u.getUserType()
+                )
+        );
+
+        return new AuthResponse(token, true);
+    }
+}
