@@ -1,0 +1,27 @@
+1) 2018 Vize 3.soru benzeri -> 5 adet reccurrence relation çöz
+
+2) 2018 Vize 4.soru benzeri -> 5 adet complexity bul/kanıtla
+
+3) Binary insertion sort algoritması psuedo-code verilmiş
+-insertion her "position" belirlediğinde binary search ile "key"den küçük en büyük sayının pozisyonunu buluyor
+
+a) worst case(5 puan)
+b) best case(5 puan)
+c) average(10 puan)
+
+4) Tower of hanoide tower1den towere 3 direkt atlanmayacak şekilde algoritma geliştir 
+- peg A'dan peg C'ye geçiş yasak, ortanca pegi atlamak yasak
+https://www.geeksforgeeks.org/twisted-tower-of-hanoi-problem/
+
+a) psuedo code yaz
+b) reccurence relation
+c) avg case complexity
+
+5) Sayarak sıralayan algoritma psuedo code u verilmiş.
+-counting sort
+
+https://www.codingeek.com/algorithms/counting-sort-explanation-pseudocode-and-implementation/
+
+a) örnekte verilen listeyi bu algoritmaya göre sıralayın.
+b) stable mı ? açıkla
+c) in-place mi ? açıkla

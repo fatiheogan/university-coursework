@@ -1,0 +1,7 @@
+cse321 algoritma final soruları 
+
+1 - Vizedeki towers of hanoi sorusu recurrence relationunu falan da sormuş
+2- exhaustive searchle clique problemini çözen bir algoritma yazmamızı istemiş eski finallerde var
+3 - belli bir indexe kadar artıp sonrasında azalan array için peak entry indexini bulan bir divide and conquer algoritması yazmamızı istemişti
+4 - rod cutting problemi dynamic programming eski finallerde var
+5 - change making problemini greedy tekniğiyle çözen bir algoritma ve bu problemle knapsack problemin ilişkisini yazmamızı istemişti

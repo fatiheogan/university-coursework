@@ -1,0 +1,14 @@
+part1:
+
+
+part2:
+https://www.techiedelight.com/find-minimum-maximum-element-array-minimum-comparisons/
+
+part3:
+https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array/
+
+part4:
+https://www.geeksforgeeks.org/counting-inversions/
+
+part5:
+https://www.ritambhara.in/divide-conquer-approach-to-find-an/

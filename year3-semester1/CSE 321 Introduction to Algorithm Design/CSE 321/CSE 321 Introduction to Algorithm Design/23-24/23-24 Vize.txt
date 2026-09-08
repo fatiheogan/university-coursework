@@ -1,0 +1,10 @@
+gecmiş yıllardaki recurrence sorusu katsayıları farklı:
+a) x(1) degeri 4 olacak , kat sayilar 3 ve 2
+b) katsayisi 10
+c) ayni?
+d) 4^k ve n/4
+e) ayni
+
+--> 3'e bölünen merge sort tasarlayın; a) pseudocode, b) şema çizerek anlatın, c) complexity analizini yapın
+--> BFS'yi modify ederek bir graph'ın connected olup olmadini belirleyen bir algoritma gelistirin
+--> Geçmiş yıllardaki İnsertion, Quick sort ,worst best case sorusu

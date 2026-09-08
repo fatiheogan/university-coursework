@@ -1,0 +1,3 @@
+Ercan Ulusoy'dan -> Local minimumlu bir soru, merge sort istenmiþ. 
+Ahmet Emin Kaplan'dan -> Array veriliyor, içinde ardýþýk olarak toplandýgýnda maksimumu verecek subarray(eleman dizisi) bulunacak.Ornek:
+-2 6 5 -6 4 5 8 -5 -4 5 -8 oldugu durumda (4 5 8) subarray bize maksimumu verir. 
