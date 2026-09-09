@@ -1,0 +1,29 @@
+slayt1 :
+
+Şimdi sıra geldi üçüncü ve son fonksiyonumuza: f(x) = ln(x) çarpı kök x. Bu fonksiyonu, ilk iki fonksiyondan farklı olarak [1, 5] aralığında inceleyeceğiz. 
+Bunun sebebi şu: ln(x) sıfırda tanımsız, dolayısıyla aralığa sıfırı dahil edemiyoruz; ayrıca x = 1 noktasında ln(1) = 0 olduğu için fonksiyon o noktada güzelce sıfırdan başlıyor.
+burada da 4 düğüm noktası kullanıyoruz, yani 3. dereceden bir polinom üreteceğiz. Görüldüğü gibi fonksiyon düzgün ve monoton bir şekilde artıyor.
+Sağdaki karşılaştırma tablosunda ise gerçek f(x) değerleri ile interpolasyon polinomumuzun P(x) değerlerini yan yana koyduk
+Burada dikkatinizi çekmek istediğim şey hataların ne kadar küçük olduğu. Bu durumda seçtiğimiz fonksiyonun inetrpolasyon polinomunun güvenilirliğini göstermekte.
+
+
+slayt2: 
+
+Bu slaytta polinomumuzu nasıl kurduğumuzu adım adım gösteriyoruz.
+Birinci adımda her düğüm için bir Lagrange baz polinomu yazıyoruz: L₀, L₁, L₂ ve L₃.
+İkinci adımda her baz polinomunu kendi y değeriyle çarpıp topluyoruz. L₀'ın katsayısı sıfır olduğu için o terim düşüyor — 
+çünkü ln(1) = 0. Geri kalan üç terimi açıp topladığımızda şu kübik polinomu elde ediyoruz:
+P(x) = 0.0013·x³ − 0.0371·x² + 1.0832·x − 1.0474
+burada çok önemli bir şeye dikkatinizi çekmek istiyorum: kübik terimin katsayısı sadece 0.0013. Yani neredeyse sıfır. 
+Bu ne anlama geliyor? Polinomumuz aslında lineer bir doğruya çok yakın davranıyor. Yani ln(x)·√x fonksiyonu [1, 5] aralığında neredeyse bir doğru gibi
+şte cubic polinomun bu fonksiyona bu kadar iyi uymasının matematiksel sebebi de budur
+
+
+slayt3: 
+Son olarak grafiği inceleyelim. Burada mavi eğri gerçek fonksiyon ln(x)·√x, kırmızı eğri ise interpolasyon polinomumuz P(x). Bakın iki eğri öyle birbirine yapışmış ki neredeyse ayırt edemiyoruz 
+Daha önce de söylediğim gibi, fonksiyon [1, 5] aralığında neredeyse lineer bir biçimde artıyor. Bu yüzden kübik polinom çok rahat bir şekilde fonksiyonu yakalıyor.
+
+Hatanın yoğunlaştığı tek bölge ise x = 1 civarı. Bunun sebebi şu: ln(x) fonksiyonunun türevi 1/x olduğu için x = 1'de eğri en kıvrımlı, en eğri halde. Yani logaritma orada en hızlı değişen kısım.
+Özetle: ln(x)·√x, Lagrange interpolasyonu için ideal bir fonksiyon. Düzgün, yumuşak, türevleri kontrollü ve [1, 5] aralığında neredeyse lineer. 
+Bu da bize şu mesajı veriyor: Lagrange interpolasyonunun başarısı, sadece yöntemin kendisine değil, interpolasyon yapılan fonksiyonun karakterine de bağlıdır.
+Beni dinlediğiniz için teşekkür ederim. Sırada Ömer Faruk Gürsel arkadaşımız sunumunu yapacak."
