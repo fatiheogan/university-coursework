@@ -1,0 +1,20 @@
+Verilen production rule için Shift-Reduce Parser yapın. 8p
+
+Smalltalk ve javascript arasındaki temel farklar nelerdir? Hangi
+durumda hangi dili kullanırdınız? 3p
+
+Prolog ile sudoku çözen algoritma yazın. 12p
+
+Type Checking ve Type inference arasındaki farklar nelerdir? 3p
+
+
+Bir dilin kuralları verilmiş.
+-A şıkkı: Bu dilin CFG'sini yaz Parse Tree'sini çiz. 10p
+-B şıkkı: Dilin attribute gramerini yaz. 10p
+-C şıkkı: Kuralları verilen dil neden fonksiyonel bir dildir? Dilin ADT'yi
+sağlaması için neler eklenebilir? 10p
+
+
+Lisp, liste ile graph yapısı verilmiş.
+-A şıkkı: Graphta, verilen iki node arası path varsa true yoksa false döndürün. 15p
+-B şıkkı: verilen iki graph eşitse true değilse false döndürün. 20p

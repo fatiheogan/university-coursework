@@ -1,0 +1,23 @@
+1. Implement Sudoku in  prolog (sudoku solution)(25P)
+2. Clojure: Add, sub, mult, lth(less than), sort, count(also count inner lists) operations on two list like this. You can only user standart list operations and +,-,* arithmetic operations.(20P)
+	(addlist [list1 list2] ...some magic here...) 
+	(sublist [list1 list2] ...some magic here...) 
+	(multlist [list1 list2] ...some magic here...)
+
+	Output:(1,0,0) + (1,0) = (1,1,0)
+
+3. CFG question which was have 6-7 rules. (20P)
+	
+	Is it valid according to CFG?
+	
+		(2 3 x) 5 + 
+
+4. DFA Question. (15P)
+
+	a. Is aabc substring available in (a,b,c,d)
+	b. If one letter repeat even numbers, draw a dfa which accept this strings.
+		aabbcc, aaaabbcc
+
+5. Parse tree. There was some rules. You have to implement parse tree. (10)
+	a. Ex: ((2 3 x)(5 2 +) +).   Draw parse tree of this statement
+	b. This part related with 3rd question. Find missing part of 3rd question and implement parse tree 

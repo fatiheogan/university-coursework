@@ -1,0 +1,38 @@
+PL 2021-2022 FINAL CIKMIS SORULAR
+1. What are the language evaluation criteria?
+
+2. What is the relationship between inheritance and sub-typing?
+
+3. What are the advantages and disadvantages of functional programming?
+
+4. Birkaç tane programlama dili verilmiş. Write for each programming language, if it is strongly typed or weakly typed?
+
+5. What is the difference between abstract classes vs interfaces?
+
+6. What is the difference between an abstract class with pure virtual function in C++ vs interfaces in Java?
+
+7. What is the difference between procedures and functions?
+
+8. What is a module and how is it useful for ADTs?
+
+9. What does Java use instead of modules, and how is it different from modules? (Answer: Java uses packages)
+
+10. What is the advantages of dynamic scoping over static scoping?
+
+11. Java does not allow static binding, compared to C++. Advantages and disadvantages?
+
+12. How smalltalk handles multiple inheritance?
+
+13.1. Bir dilin kuralları verilmiş. Variable’lar yazılmış, function’lar yazılmış. Küçücük bir program verilmiş. Output ne verir?
+
+13.2. Write a CFG for how the language handles function. Write the parsing tree for the function.
+
+14. Link listed verilmiş. Write an algebraic sequence for the following ADT. Using the following operations: is_element_of(x, L); is_empty(L); create(L); insert(x, L); remove(x,L).
+
+15. 3 şıklı Lisp sorusu. Binary Search Tree verilmiş; List içerisinde node var (bunun içerisinde de sayılar). Left tree list olarak, right tree list olarak. Search fonksiyonu, insert fonksiyonu ve remove fonksiyonu yazın. Loop kullanmak, mapping kullanmak yasak. Basic operationlar kullanılabilir.
+
+16.1. Prolog sorusu. nth Fibonacci sayısı çıkaran bir program istenmiş. 3’üncü Fibonacci sayısı 2 döndürmesi lazım (1 1 2). 7’nci sayı 13 döndürmeli (1 1 2 3 5 8 13).
+
+16.2. Fibonacci için bir tane query verilmiş. Senin yazdığın programa göre o query nasıl ispatlanir’lanır?(resolution-unification) 
+
+17. Predicate, function, Horn clause aciklama
