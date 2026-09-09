@@ -1,0 +1,16 @@
+MODULE 1-2
+Youmi Mini USB 2.0 Microphone 
+MakerHawk 2pcs Mini Speaker 
+DROK 5W+5W Mini Audio Amplifier Board PAM8406
+
+MODULE-3
+Raspberry Pi 4 4GB
+motor
+MODULE-4 
+IMU MPU-6050 (I2C, 0x68)
+Quadrature ENCODER 
+
+MODULE-5
+ok
+
+MODULE-6 
